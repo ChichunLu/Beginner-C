@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int GCD(int a, int b); //find GCD
+int LCM(int a, int b);  //find LCM
+
+int main(void)
+{
+    int N, i, j;
+    int n1, n2, n3;
+
+    scanf("%d", &N);
+
+    for(i=0;i<N;i++){
+            scanf("%d %d %d", &n1, &n2, &n3);
+            printf("%d %d\n",
+                   GCD(GCD(n1, n2), n3),
+                   LCM(LCM(n1, n2), n3));
+    }
+
+    return 0;
+}
+
+int GCD(int a, int b)
+{
+    while(b!=0){
+        int r=a%b;
+        a=b;
+        b=r;
+    }
+    return a;
+}
+
+int LCM(int a, int b)
+{
+    return a*b/GCD(a, b);
+}
